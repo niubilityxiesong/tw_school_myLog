@@ -2,12 +2,9 @@ import React, {Component} from 'react'
 import { Layout, Menu, Icon } from 'antd';
 import { connect } from 'react-redux';
 
-const { Sider } = Layout;
-
 class Navigation extends Component {
     render() {
         return (
-            <Sider width={200} style={{ background: "#fff" }}>
             <Menu theme="white" 
                 mode="inline" 
                 defaultSelectedKeys={["我的日志"]}
@@ -28,7 +25,6 @@ class Navigation extends Component {
                 <Icon type="star-o" />
                 </Menu.Item>
             </Menu>
-            </Sider>
         );
     }
 }

@@ -14,3 +14,11 @@
 .margin-t-3 {
   margin-top: 20px;
 }
+
+.ant-form-item-label {
+  float: right;
+}
+
+.practise-diary-operation-button-group {
+  text-align: right;
+}

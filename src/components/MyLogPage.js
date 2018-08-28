@@ -5,7 +5,7 @@ import Navigation from './Navigation';
 import InputLog from './InputLog';
 import OutputLog from './OutputLog';
 
-const { Content } = Layout;
+const { Content, Sider } = Layout;
 
 class MyLogPage extends Component {
 
@@ -14,9 +14,10 @@ class MyLogPage extends Component {
             <Content style={{ padding: "0 50px", display: 'flex', flexDirection: 'column' }}>
             <BreadCrumb />
             <Layout style={{ padding: "24px 0", background: "#fff" }}>
-                <Navigation />
+                <Sider width={200} style={{ background: "#fff" }}>
+                    <Navigation />
+                </Sider>
                 <InputLog />
-                <OutputLog />
             </Layout>
             </Content>
         );
