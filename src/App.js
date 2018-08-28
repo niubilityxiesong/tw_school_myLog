@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import { Layout } from 'antd';
 import './App.css';
 import 'antd/dist/antd.css';
-import Top from './components/Top'
-import Left from './components/Left'
-import Middle from './components/Middle';
+import PageHeader from './components/PageHeader'
+import PageFooter from './components/PageFooter'
+import MyLogPage from './components/MyLogPage';
 
 class App extends Component {
   render() {
     return (
       <Layout style={{ height: '100vh' }}>
-        <Top />
-        <Middle />
-        <Left />
+        <PageHeader />
+        <MyLogPage />
+        <PageFooter />
       </Layout>
     );
   }

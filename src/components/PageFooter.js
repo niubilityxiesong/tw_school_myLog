@@ -3,7 +3,7 @@ import { Layout } from 'antd';
 
 const { Footer } = Layout;
 
-class Left extends React.Component {
+class PageFooter extends React.Component {
     render() {
         return (
             <Footer style={{ textAlign: "center" }}>
@@ -12,4 +12,4 @@ class Left extends React.Component {
         );
     }
 }
-export default Left;
+export default PageFooter;

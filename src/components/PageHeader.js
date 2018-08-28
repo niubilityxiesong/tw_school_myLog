@@ -5,7 +5,6 @@ const { Header } = Layout;
 
 function handleMenuClick(e) {
     message.info("Click on menu item.");
-    console.log("click", e);
 }
   
 const menu = (
@@ -33,7 +32,7 @@ const hoverContent = (
     </div>
 );
 
-class Top extends React.Component {
+class PageHeader extends React.Component {
     state = {
         hovered: false
     };
@@ -83,4 +82,4 @@ class Top extends React.Component {
         );
     }
 }
-export default Top;
+export default PageHeader;
