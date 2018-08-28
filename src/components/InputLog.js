@@ -3,6 +3,7 @@ import { Layout, DatePicker, Input, Button, Card, Form } from 'antd';
 import { connect } from "react-redux";
 import OutputLog from './OutputLog';
 import { formatAction, addText } from '../Action';
+import moment from 'moment';
 
 const { Content } = Layout;
 const { TextArea } = Input;
@@ -11,10 +12,10 @@ const FormItem = Form.Item;
 class InputLog extends Component{
     constructor(props) {
         super(props);
-
+        let date = new Date();
         this.state = {
             text: "",
-            date: ""
+            date: date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
         }
     }
 
@@ -49,7 +50,7 @@ class InputLog extends Component{
                         label="日期"
                     >
                         
-                        <DatePicker onChange={(date, dateString) => {
+                        <DatePicker defaultValue={moment(new Date())} allowClear={false} onChange={(date, dateString) => {
                             this.setState({date:dateString})
                         }}/>
                         
@@ -66,7 +67,7 @@ class InputLog extends Component{
                     </FormItem>
                     <div className="practise-diary-operation-button-group">
                         <Button type="primary" size="small" ghost className="button-note" onClick={() => {
-                            this.props.addText(this.state.text)
+                            this.props.addText(this.state.text, this.state.date)
                             this.setState({text:""})
                         }}>提交</Button>
                         <Button type="primary" size="small" ghost className="button-note" style={{ margin:"10px" }}>取消</Button>
@@ -83,8 +84,8 @@ const mapPropsToDispatch = state => ({
     message: state.message
 });
 const mapDispatchToState = dispatch => ({
-    addText: text => {
-      let data = { text }
+    addText: (text, date) => {
+      let data = { text, date }
       dispatch(formatAction(addText, data))
     }
 });
