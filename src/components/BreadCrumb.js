@@ -2,12 +2,7 @@ import React,{ Component } from 'react'
 import { Breadcrumb } from 'antd';
 import { connect } from 'react-redux';
 
-
 class BreadCrumb extends Component {
-    constructor(props) {
-        super(props)
-    }
-    
     render() {
         return (
             <Breadcrumb style={{ margin: "16px 0" }}>
@@ -21,7 +16,7 @@ class BreadCrumb extends Component {
 
 const mapPropsToDispatch = state => ({
     selectedPage: state.selection
-  });
+});
 const mapDispatchToState = dispatch => ({});
 
 export default connect(mapPropsToDispatch, mapDispatchToState)(BreadCrumb);

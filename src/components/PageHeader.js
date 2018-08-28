@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Layout, Row, Col, Dropdown, Button, Popover, Icon, message, Menu } from 'antd';
 
 const { Header } = Layout;
@@ -32,7 +32,7 @@ const hoverContent = (
     </div>
 );
 
-class PageHeader extends React.Component {
+class PageHeader extends Component {
     state = {
         hovered: false
     };
