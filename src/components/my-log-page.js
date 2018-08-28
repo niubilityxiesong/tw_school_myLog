@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Layout } from 'antd';
-import BreadCrumb from './BreadCrumb';
-import Navigation from './Navigation';
-import InputLog from './InputLog';
+import BreadCrumb from './bread-crumb';
+import Navigation from './navigation';
+import InputLog from './input-log';
 
 const { Content, Sider } = Layout;
 

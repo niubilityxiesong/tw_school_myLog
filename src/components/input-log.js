@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Layout, DatePicker, Input, Button, Card, Form } from 'antd';
 import { connect } from "react-redux";
-import OutputLog from './OutputLog';
+import OutputLog from './output-log';
 import { formatAction, addText } from '../Action';
 import moment from 'moment';
 
