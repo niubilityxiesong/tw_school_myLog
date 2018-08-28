@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
-import { Layout, Menu, Icon } from 'antd';
+import { Menu, Icon } from 'antd';
 import { connect } from 'react-redux';
+import { formatAction, changePage } from '../Action';
 
 class Navigation extends Component {
     render() {
@@ -34,10 +35,7 @@ const mapPropsToDispatch = state => ({
 });
 const mapDispatchToState = dispatch => ({
     changePage: (key) => {
-        dispatch ({
-            type: "CHANGE_PAGE",
-            data: key
-        })
+        dispatch (formatAction(changePage, key))
     } 
 });
 

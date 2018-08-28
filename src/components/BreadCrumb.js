@@ -17,6 +17,6 @@ class BreadCrumb extends Component {
 const mapPropsToDispatch = state => ({
     selectedPage: state.selection
 });
-const mapDispatchToState = dispatch => ({});
+const mapDispatchToState = () => ({});
 
 export default connect(mapPropsToDispatch, mapDispatchToState)(BreadCrumb);

@@ -1,4 +1,5 @@
 import { combineReducers } from "../../node_modules/redux";
+import { addText, changePage } from "../Action";
 
 const initState = {
     text:[],
@@ -6,18 +7,15 @@ const initState = {
 }
 
 const message = (state = initState.text, action) => {
-    if(action.type === 'ADD_TEXT'){
-        let newState = [...state];
-        newState.push(action.data);
-        return newState;
+    if(action.type === addText){
+        return Object.assign([], state.concat(action.data))
     }
     return state;
 }
 
 const selection = (state = initState.selectedPage, action) => {
-    if(action.type === 'CHANGE_PAGE'){
+    if(action.type === changePage){
         state = action.data;
-        //return {...state,[state.selectedPage]:action.data};
     }
     return state;
 }

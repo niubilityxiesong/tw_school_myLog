@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Layout, DatePicker, Input, Button, Card, Row, Col, Form } from 'antd';
+import { Layout, DatePicker, Input, Button, Card, Form } from 'antd';
 import { connect } from "react-redux";
 import OutputLog from './OutputLog';
+import { formatAction, addText } from '../Action';
 
 const { Content } = Layout;
 const { TextArea } = Input;
@@ -72,8 +73,6 @@ class InputLog extends Component{
                     </div>
                 </Form>
             </Card>
-
-                
             <OutputLog />
             </Content>
         );
@@ -85,10 +84,8 @@ const mapPropsToDispatch = state => ({
 });
 const mapDispatchToState = dispatch => ({
     addText: text => {
-      dispatch({
-        type: "ADD_TEXT",
-        data: { text }
-      });
+      let data = { text }
+      dispatch(formatAction(addText, data))
     }
 });
 

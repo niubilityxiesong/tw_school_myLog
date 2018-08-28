@@ -3,7 +3,6 @@ import { Layout } from 'antd';
 import BreadCrumb from './BreadCrumb';
 import Navigation from './Navigation';
 import InputLog from './InputLog';
-import OutputLog from './OutputLog';
 
 const { Content, Sider } = Layout;
 
