@@ -14,14 +14,13 @@ class InputLog extends Component{
         super(props);
         let date = new Date();
         this.state = {
-            text: "",
+            text: "## 我做了什么\n## 学了什么\n## 有什么印象深刻的收获\n",
             date: date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
         }
     }
 
     handleTextChange = event => {
         const text = event.target.value;
-        console.log(text)
         if (text !== null) {
             this.setState({
                 text: text
@@ -59,18 +58,14 @@ class InputLog extends Component{
                         {...formItemLayout}
                         label="总结内容"
                     >
-                        <TextArea rows={5} value={this.state.text} onChange={this.handleTextChange}>
-                            ## 我做了什么
-                            ## 学了什么
-                            ## 有什么印象深刻的收获
-                        </TextArea>                        
+                        <TextArea rows={5} value={this.state.text} onChange={this.handleTextChange} />                        
                     </FormItem>
                     <div className="practise-diary-operation-button-group">
                         <Button type="primary" size="small" ghost className="button-note" onClick={() => {
                             this.props.addText(this.state.text, this.state.date)
-                            this.setState({text:""})
+                            this.setState({text:"## 我做了什么\n## 学了什么\n## 有什么印象深刻的收获\n"})
                         }}>提交</Button>
-                        <Button type="primary" size="small" ghost className="button-note" style={{ margin:"10px" }}>取消</Button>
+                        <Button size="small" className="button-note" style={{ margin:"10px" }}>取消</Button>
                     </div>
                 </Form>
             </Card>
@@ -80,9 +75,7 @@ class InputLog extends Component{
     }
 }
 
-const mapPropsToDispatch = state => ({
-    message: state.message
-});
+const mapPropsToDispatch = () => ({});
 const mapDispatchToState = dispatch => ({
     addText: (text, date) => {
       let data = { text, date }

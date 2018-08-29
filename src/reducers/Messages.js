@@ -1,5 +1,5 @@
 import { combineReducers } from "../../node_modules/redux";
-import { addText, changePage } from "../Action";
+import { addText, changePage, destoryLog } from "../Action";
 
 const initState = {
     text:[],
@@ -9,6 +9,11 @@ const initState = {
 const message = (state = initState.text, action) => {
     if(action.type === addText){
         return Object.assign([], state.concat(action.data))
+    }
+    if(action.type === destoryLog){
+        let newState = [...state]
+        newState.splice(action.data, 1)
+        return newState;   
     }
     return state;
 }

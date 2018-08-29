@@ -6,6 +6,7 @@
     "antd": "^3.8.3",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-markdown": "^3.4.1",
     "react-redux": "^5.0.7",
     "react-scripts": "1.1.5",
     "reduct": "^3.3.1",
