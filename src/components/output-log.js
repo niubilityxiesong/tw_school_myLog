@@ -10,11 +10,11 @@ class OutputLog extends Component {
     render() {
         return (
             <Content style={{ background: "#fff", padding: 24, margin: 0, minHeight: 280 }}>
-            {this.props.message.map(element => {
+            {this.props.message.map((element, index) => {
                 return (
-                    <span>
+                    <span key={index}>
                         <label>{element.date}的日志</label>
-                        <TextArea defaultValue={element.text} disabled={true} key/>
+                        <TextArea defaultValue={element.text} disabled={true}/>
                     </span>
                 );
             })}
