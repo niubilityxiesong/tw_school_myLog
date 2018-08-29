@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 import { Layout, Button, Card, Form ,Icon, Popconfirm, message} from 'antd';
 import Markdown from 'react-markdown';
 import { connect } from "react-redux";
-import { formatAction, destoryLog } from '../Action';
+import { formatAction, destoryLog } from '../../Action';
 
 const { Content } = Layout;
 
-class OutputLog extends Component {
-    constructor(props) {
-        super(props)
-    }
-
+class DiariesList extends Component {
+    
     handleDelete = (index) => {
         this.props.destoryText(index);
         message.success('删除成功');
@@ -18,18 +15,18 @@ class OutputLog extends Component {
 
     render() {
         return (
-            <Content style={{ background: "#fff", margin: 0, minHeight: 280 }}>
+            <Content className="diaries-list-content">
             {this.props.message.map((element, index) => {
                 return (
-                    <Card title={element.date + "的日志"} key={index} style={{margin: '24px 0'}} 
+                    <Card title={element.date + "的日志"} key={index} className="card-item" 
                     extra={<Popconfirm title="确认删除吗?" onConfirm={() => {this.handleDelete(index)}} okText="确认" cancelText="取消">
                         <Icon type="close" />
                     </Popconfirm>}>
                         <Form>
-                        <Markdown source={element.text} style={{background: '#ececec'}}/>
+                        <Markdown source={element.text}/>
                         <div className="practise-diary-operation-button-group">
                             <Button type="primary" size="small" ghost className="button-note" >修改日志</Button>
-                            <Button type="primary" size="small" ghost className="button-note" style={{ margin:"10px" }}>评论日志</Button>
+                            <Button type="primary" size="small" ghost className="button-note button-distance">评论日志</Button>
                         </div>
                         </Form>
                     </Card>
@@ -49,4 +46,4 @@ const mapDispatchToState = (dispatch) => ({
     }
 });
 
-export default connect(mapPropsToDispatch,mapDispatchToState)(OutputLog);
+export default connect(mapPropsToDispatch,mapDispatchToState)(DiariesList);

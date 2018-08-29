@@ -1,13 +1,15 @@
 import React, {Component} from 'react'
 import { Menu, Icon } from 'antd';
 import { connect } from 'react-redux';
-import { formatAction, changePage } from '../Action';
+import { formatAction, changePage } from '../../Action';
 
 class Navigation extends Component {
     render() {
         return (
-            <Menu theme="white" 
+            <Menu
+                className='menu-link'
                 mode="inline" 
+                defaultOpenKeys={['1']}
                 defaultSelectedKeys={["我的日志"]}
                 onClick={(event) => {
                     this.props.changePage(event.key);

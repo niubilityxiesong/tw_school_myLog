@@ -56,24 +56,25 @@ class PageHeader extends Component {
                     <Col span={6}>
                     <div className="logo"></div>
                     </Col>
+
                     <Col span={14}>
                     <Dropdown overlay={menu}>
-                    <Button className="margin-t-3" style={{ float: "right" }}>
+                    <Button className="margin-t-3 button-position">
                         柳靓云 <Icon type="down" />
                     </Button>
                     </Dropdown>
                     </Col>
-                    <Col span={1} style={{ marginTop: "5px", textAlign: "right" }}>
+                    
+                    <Col className='header-bell' span={1}>
                     <span className="ant-badge">
                     <Popover
-                        style={{ width: 500 }}
                         content={hoverContent}
                         title="最新消息"
                         trigger="hover"
                         visible={this.state.hovered}
                         onVisibleChange={this.handleHoverChange}
                     >
-                        <Icon type="bell" style={{ fontSize: "22px", color: "white" }} />
+                        <Icon type="bell" className='bell-icon' />
                     </Popover>
                     </span>
                     </Col>

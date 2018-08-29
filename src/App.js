@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import { Layout } from 'antd';
-import './App.css';
+import './css/App.css';
 import 'antd/dist/antd.css';
+import './css/index.css'
+import './css/contents.css'
 import PageHeader from './components/page-header'
 import PageFooter from './components/page-footer'
-import MyLogPage from './components/my-log-page';
+import PageContent from './components/page-content';
 
 class App extends Component {
   render() {
     return (
       <Layout style={{ height: '100vh' }}>
         <PageHeader />
-        <MyLogPage />
+        <PageContent />
         <PageFooter />
       </Layout>
     );

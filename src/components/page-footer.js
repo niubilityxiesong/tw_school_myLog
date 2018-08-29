@@ -6,7 +6,7 @@ const { Footer } = Layout;
 class PageFooter extends Component {
     render() {
         return (
-            <Footer style={{ textAlign: "center" }}>
+            <Footer className='text-position'>
                 ThoughtWorks School ©2018
             </Footer>
         );

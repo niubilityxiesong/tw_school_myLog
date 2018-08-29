@@ -1,0 +1,27 @@
+.add-diary-content{
+    background: #fff;
+    padding: 0 24px;
+    margin: 0;
+    min-height: 280; 
+}
+
+.button-distance{
+    margin: 10px;
+}
+
+.bread-crumb{
+    margin: 16px 0;
+}
+
+.diaries-list-content{
+    background: #fff;
+    margin: 0;
+    min-height: 280; 
+}
+
+.card-item{
+    margin: 24px 0;
+}
+.menu-link{
+    height: 100%;
+}

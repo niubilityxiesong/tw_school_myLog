@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 class BreadCrumb extends Component {
     render() {
         return (
-            <Breadcrumb style={{ margin: "16px 0" }}>
+            <Breadcrumb className='bread-crumb'>
                 <Breadcrumb.Item>思沃学院</Breadcrumb.Item>
                 <Breadcrumb.Item>成长日志</Breadcrumb.Item>
                 <Breadcrumb.Item>{this.props.selectedPage}</Breadcrumb.Item>

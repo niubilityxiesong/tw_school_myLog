@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { Layout, DatePicker, Input, Button, Card, Form } from 'antd';
 import { connect } from "react-redux";
-import OutputLog from './output-log';
-import { formatAction, addText } from '../Action';
+import OutputLog from './diaries-list';
+import { formatAction, addText } from '../../Action';
 import moment from 'moment';
 
 const { Content } = Layout;
 const { TextArea } = Input;
 const FormItem = Form.Item;
 
-class InputLog extends Component{
+class AddDiary extends Component{
     constructor(props) {
         super(props);
         let date = new Date();
@@ -41,7 +41,7 @@ class InputLog extends Component{
         };
 
         return (
-            <Content style={{ background: '#fff', padding: "0 24px", margin: 0, minHeight: 280 }}>
+            <Content className='add-diary-content'>
             <Card title="新的日志" extra={<a href="https://www.baidu.com">如何写一篇优秀的成长日志</a>}>
                 <Form>
                     <FormItem
@@ -65,7 +65,7 @@ class InputLog extends Component{
                             this.props.addText(this.state.text, this.state.date)
                             this.setState({text:"## 我做了什么\n## 学了什么\n## 有什么印象深刻的收获\n"})
                         }}>提交</Button>
-                        <Button size="small" className="button-note" style={{ margin:"10px" }}>取消</Button>
+                        <Button size="small" className='button-note button-distance'>取消</Button>
                     </div>
                 </Form>
             </Card>
@@ -83,4 +83,4 @@ const mapDispatchToState = dispatch => ({
     }
 });
 
-export default connect(mapPropsToDispatch,mapDispatchToState)(InputLog);
+export default connect(mapPropsToDispatch,mapDispatchToState)(AddDiary);
