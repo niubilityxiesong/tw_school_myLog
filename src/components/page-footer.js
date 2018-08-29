@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Layout } from 'antd';
+import { Layout } from 'antd'
 
-const { Footer } = Layout;
+const { Footer } = Layout
 
 class PageFooter extends Component {
     render() {
@@ -9,7 +9,7 @@ class PageFooter extends Component {
             <Footer className='text-position'>
                 ThoughtWorks School ©2018
             </Footer>
-        );
+        )
     }
 }
-export default PageFooter;
+export default PageFooter

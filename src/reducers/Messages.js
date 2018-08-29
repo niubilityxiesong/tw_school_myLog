@@ -1,9 +1,9 @@
-import { combineReducers } from "../../node_modules/redux";
-import { addText, changePage, destoryLog } from "../Action";
+import { combineReducers } from '../../node_modules/redux'
+import { addText, changePage, destoryLog } from '../Action'
 
 const initState = {
     text:[],
-    selectedPage: "我的日志"
+    selectedPage: '我的日志'
 }
 
 const message = (state = initState.text, action) => {
@@ -13,16 +13,16 @@ const message = (state = initState.text, action) => {
     if(action.type === destoryLog){
         let newState = [...state]
         newState.splice(action.data, 1)
-        return newState;   
+        return newState   
     }
-    return state;
+    return state
 }
 
 const selection = (state = initState.selectedPage, action) => {
     if(action.type === changePage){
-        state = action.data;
+        state = action.data
     }
-    return state;
+    return state
 }
 
 const reducer = combineReducers({
@@ -30,4 +30,4 @@ const reducer = combineReducers({
     selection: selection
 })
 
-export default reducer;
+export default reducer
