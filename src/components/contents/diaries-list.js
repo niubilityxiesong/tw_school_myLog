@@ -23,7 +23,7 @@ class DiariesList extends Component {
                                 <Icon type="close" />
                             </Popconfirm>}>
                             <Form>
-                                <Markdown source={element.text}/>
+                                <Markdown source={element.text} className="markdown"/>
                                 <div className="practise-diary-operation-button-group">
                                     <Button type="primary" size="small" ghost className="button-note" >修改日志</Button>
                                     <Button type="primary" size="small" ghost className="button-note button-distance">评论日志</Button>
