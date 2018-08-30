@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Layout, Button, Card, Form ,Icon, Popconfirm, message} from 'antd'
 import Markdown from 'react-markdown'
 import { connect } from 'react-redux'
-import { formatAction, DESTORYLOG, CHANGEDIARY } from '../../Action'
+import { formatAction, DESTORYLOG, CHANGEDIARY, DISPLAY, HIDE } from '../../Action'
 import DiaryEditForm from './diary-edit-form'
 const { Content } = Layout
 
@@ -31,7 +31,7 @@ class DiariesList extends Component {
                                     </div>
                                 </Form>
                             </Card>
-                            <Card className={diary.changeDiary === 'diary-display-block' ? 'diary-display-none' : 'diary-display-block'}
+                            <Card className={diary.changeDiary === DISPLAY ? HIDE : DISPLAY}
                                 title="修改成长日志">
                                 <DiaryEditForm diary={diary} index={index}/>
                             </Card>

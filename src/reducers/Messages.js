@@ -1,5 +1,5 @@
 import { combineReducers } from '../../node_modules/redux'
-import { ADDTEXT, CHANGEPAGE, DESTORYLOG, FIXTEXT, CHANGEDIARY } from '../Action'
+import { ADDTEXT, CHANGEPAGE, DESTORYLOG, FIXTEXT, CHANGEDIARY, DISPLAY, HIDE } from '../Action'
 
 const initState = {
     text:[],
@@ -20,18 +20,18 @@ const message = (state = initState.text, action) => {
             return Object.assign({}, diary, {
                 text: id === action.data.index ? action.data.text : diary.text,
                 date: id === action.data.index ? action.data.date : diary.date,
-                changeDiary: id === action.data.index ? 
-                    (diary.changeDiary === 'diary-display-block' ? 'diary-display-none' : 'diary-display-block') 
-                    : diary.changeDiary
+                changeDiary: id === action.data.index 
+                ? (diary.changeDiary === DISPLAY ? HIDE : DISPLAY) 
+                : diary.changeDiary
             })
         })
     }
     if(action.type === CHANGEDIARY){
         return state.map((diary, id) => {
             return Object.assign({}, diary, {
-                changeDiary: id === action.data ? 
-                    (diary.changeDiary === 'diary-display-block' ? 'diary-display-none' : 'diary-display-block') 
-                    : diary.changeDiary
+                changeDiary: id === action.data 
+                ? (diary.changeDiary === DISPLAY ? HIDE : DISPLAY) 
+                : diary.changeDiary
             })
         })
     }

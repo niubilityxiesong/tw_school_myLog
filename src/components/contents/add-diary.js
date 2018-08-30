@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { DatePicker, Input, Button, Card, Form } from 'antd'
 import { connect } from 'react-redux'
 import DiariesList from './diaries-list'
-import { formatAction, ADDTEXT } from '../../Action'
+import { formatAction, ADDTEXT, INITEDIT } from '../../Action'
 import moment from 'moment'
 
 const { TextArea } = Input
@@ -13,7 +13,7 @@ class AddDiary extends Component{
         super(props)
         let date = new Date()
         this.state = {
-            text: '## 我做了什么\n## 学了什么\n## 有什么印象深刻的收获\n',
+            text: INITEDIT,
             date: date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
         }
     }
@@ -62,9 +62,11 @@ class AddDiary extends Component{
                         <div className="practise-diary-operation-button-group">
                             <Button type="primary" size="small" ghost className="button-note" onClick={() => {
                                 this.props.addText(this.state.text, this.state.date, 'diary-display-block')
-                                this.setState({text:'## 我做了什么\n## 学了什么\n## 有什么印象深刻的收获\n'})
+                                this.setState({text:INITEDIT})
                             }}>提交</Button>
-                            <Button size="small" className='button-note button-distance'>取消</Button>
+                            <Button size="small" className='button-note button-distance' onClick={() => {
+                                 this.setState({text:INITEDIT})
+                            }}>取消</Button>
                         </div>
                     </Form>
                 </Card>
