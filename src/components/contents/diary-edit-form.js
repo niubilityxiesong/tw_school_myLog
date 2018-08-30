@@ -12,8 +12,15 @@ class DiaryEditForm extends Component{
         super(props)
         this.state = {
             text: this.props.diary.text,
-            date: this.props.diary.date,
+            date: this.props.diary.date
         }
+    }
+    
+    componentWillReceiveProps(){
+        this.setState({
+            text: this.props.diary.text,
+            date: this.props.diary.date
+        })
     }
 
     handleTextChange = event => {
@@ -44,7 +51,7 @@ class DiaryEditForm extends Component{
                     label="日期"
                 >
                         
-                    <DatePicker defaultValue={moment(this.state.date)} allowClear={false} onChange={(date, dateString) => {
+                    <DatePicker value={moment(this.state.date)} allowClear={false} onChange={(date, dateString) => {
                         this.setState({date:dateString})
                     }}/>
                         
@@ -62,7 +69,8 @@ class DiaryEditForm extends Component{
                     <Button size="small" className='button-note button-distance' onClick={() => {
                         this.props.changeDiary(this.props.index)
                         this.setState({
-                            text: this.props.diary.text
+                            text: this.props.diary.text,
+                            date: this.props.diary.date
                         })
                     }}>取消</Button>
                 </div>
