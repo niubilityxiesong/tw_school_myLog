@@ -4,6 +4,10 @@ import App from './App'
 import reducers from './reducers/Messages'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
+import './css/App.css'
+import 'antd/dist/antd.css'
+import './css/contents.css'
+import './css/index.css'
 
 const store = createStore(
     reducers,

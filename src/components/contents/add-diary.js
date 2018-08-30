@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import { Layout, DatePicker, Input, Button, Card, Form } from 'antd'
+import { DatePicker, Input, Button, Card, Form } from 'antd'
 import { connect } from 'react-redux'
 import OutputLog from './diaries-list'
 import { formatAction, addText } from '../../Action'
 import moment from 'moment'
 
-const { Content } = Layout
 const { TextArea } = Input
 const FormItem = Form.Item
 
@@ -41,7 +40,7 @@ class AddDiary extends Component{
         }
 
         return (
-            <Content className='add-diary-content'>
+            <div>
                 <Card title="新的日志" extra={<a href="https://www.baidu.com">如何写一篇优秀的成长日志</a>}>
                     <Form>
                         <FormItem
@@ -70,7 +69,7 @@ class AddDiary extends Component{
                     </Form>
                 </Card>
                 <OutputLog />
-            </Content>
+            </div>
         )
     }
 }

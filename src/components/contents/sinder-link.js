@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import { Menu, Icon } from 'antd'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { formatAction, changePage } from '../../Action'
 
-class Navigation extends Component {
+class SinderLink extends Component {
     render() {
         return (
             <Menu
@@ -16,16 +17,22 @@ class Navigation extends Component {
                 }}
             >
                 <Menu.Item key="我的日志">
-                    <span>我的日志&nbsp;&nbsp;</span>
-                    <Icon type="edit" />
+                    <Link to='/practise-diaries'>
+                        <span>我的日志&nbsp;&nbsp;</span>
+                        <Icon type="edit" />
+                    </Link>
                 </Menu.Item>
                 <Menu.Item key="我的关注">
-                    <span>我的关注&nbsp;&nbsp;</span>
-                    <Icon type="file-text" />
+                    <Link to='/followees'>
+                        <span>我的关注&nbsp;&nbsp;</span>
+                        <Icon type="file-text" />
+                    </Link>
                 </Menu.Item>
                 <Menu.Item key="优秀日志">
-                    <span>优秀日志&nbsp;&nbsp;</span>
-                    <Icon type="star-o" />
+                    <Link to='/excellent-diaries'>
+                        <span>优秀日志&nbsp;&nbsp;</span>
+                        <Icon type="star-o" />
+                    </Link>
                 </Menu.Item>
             </Menu>
         )
@@ -41,4 +48,4 @@ const mapDispatchToState = dispatch => ({
     } 
 })
 
-export default connect(mapPropsToDispatch, mapDispatchToState)(Navigation)
+export default connect(mapPropsToDispatch, mapDispatchToState)(SinderLink)

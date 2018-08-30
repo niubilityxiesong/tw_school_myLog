@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Layout } from 'antd'
+import {HashRouter as Router} from 'react-router-dom'
 import BreadCrumb from './contents/bread-crumb'
 import SiderLink from './contents/sinder-link'
-import AddDiary from './contents/add-diary'
-
+import ContentRouter from './content-router'
 const { Content, Sider } = Layout
 
 class MyLogPage extends Component {
@@ -12,12 +12,16 @@ class MyLogPage extends Component {
         return (
             <Content className='page-content'>
                 <BreadCrumb />
-                <Layout  className='content'>
-                    <Sider>
-                        <SiderLink />
-                    </Sider>
-                    <AddDiary />
-                </Layout>
+                <Router>
+                    <Layout  className='content'>
+                        <Sider>
+                            <SiderLink />
+                        </Sider>
+                        <Content className='content-router'>
+                            <ContentRouter/>
+                        </Content>
+                    </Layout>
+                </Router>
             </Content>
         )
     }
