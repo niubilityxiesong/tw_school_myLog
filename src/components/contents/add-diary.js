@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { DatePicker, Input, Button, Card, Form } from 'antd'
 import { connect } from 'react-redux'
 import DiariesList from './diaries-list'
-import { formatAction, addText } from '../../Action'
+import { formatAction, ADDTEXT } from '../../Action'
 import moment from 'moment'
 
 const { TextArea } = Input
@@ -61,7 +61,7 @@ class AddDiary extends Component{
                         </FormItem>
                         <div className="practise-diary-operation-button-group">
                             <Button type="primary" size="small" ghost className="button-note" onClick={() => {
-                                this.props.addText(this.state.text, this.state.date)
+                                this.props.addText(this.state.text, this.state.date, 'diary-display-block')
                                 this.setState({text:'## 我做了什么\n## 学了什么\n## 有什么印象深刻的收获\n'})
                             }}>提交</Button>
                             <Button size="small" className='button-note button-distance'>取消</Button>
@@ -76,9 +76,9 @@ class AddDiary extends Component{
 
 const mapPropsToDispatch = () => ({})
 const mapDispatchToState = dispatch => ({
-    addText: (text, date) => {
-        let data = { text, date }
-        dispatch(formatAction(addText, data))
+    addText: (text, date, changeDiary) => {
+        let data = { text, date, changeDiary }
+        dispatch(formatAction(ADDTEXT, data))
     }
 })
 

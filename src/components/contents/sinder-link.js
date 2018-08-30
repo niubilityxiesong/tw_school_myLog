@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { Menu, Icon } from 'antd'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { formatAction, changePage } from '../../Action'
+import { formatAction, CHANGEPAGE } from '../../Action'
 
 class SinderLink extends Component {
     render() {
@@ -44,7 +44,7 @@ const mapPropsToDispatch = state => ({
 })
 const mapDispatchToState = dispatch => ({
     changePage: (key) => {
-        dispatch (formatAction(changePage, key))
+        dispatch (formatAction(CHANGEPAGE, key))
     } 
 })
 

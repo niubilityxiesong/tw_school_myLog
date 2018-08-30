@@ -1,5 +1,5 @@
 import { combineReducers } from '../../node_modules/redux'
-import { addText, changePage, destoryLog, fixText } from '../Action'
+import { ADDTEXT, CHANGEPAGE, DESTORYLOG, FIXTEXT, CHANGEDIARY } from '../Action'
 
 const initState = {
     text:[],
@@ -7,19 +7,31 @@ const initState = {
 }
 
 const message = (state = initState.text, action) => {
-    if(action.type === addText){
+    if(action.type === ADDTEXT){
         return Object.assign([], state.concat(action.data))
     }
-    if(action.type === destoryLog){
+    if(action.type === DESTORYLOG){
         let newState = [...state]
         newState.splice(action.data, 1)
         return newState   
     }
-    if(action.type === fixText){
+    if(action.type === FIXTEXT){
         return state.map((diary, id) => {
             return Object.assign({}, diary, {
                 text: id === action.data.index ? action.data.text : diary.text,
-                date: id === action.data.index ? action.data.date : diary.date
+                date: id === action.data.index ? action.data.date : diary.date,
+                changeDiary: id === action.data.index ? 
+                    (diary.changeDiary === 'diary-display-block' ? 'diary-display-none' : 'diary-display-block') 
+                    : diary.changeDiary
+            })
+        })
+    }
+    if(action.type === CHANGEDIARY){
+        return state.map((diary, id) => {
+            return Object.assign({}, diary, {
+                changeDiary: id === action.data ? 
+                    (diary.changeDiary === 'diary-display-block' ? 'diary-display-none' : 'diary-display-block') 
+                    : diary.changeDiary
             })
         })
     }
@@ -27,7 +39,7 @@ const message = (state = initState.text, action) => {
 }
 
 const selection = (state = initState.selectedPage, action) => {
-    if(action.type === changePage){
+    if(action.type === CHANGEPAGE){
         state = action.data
     }
     return state

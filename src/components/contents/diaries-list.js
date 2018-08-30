@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { Layout, Button, Card, Form ,Icon, Popconfirm, message} from 'antd'
 import Markdown from 'react-markdown'
 import { connect } from 'react-redux'
-import { formatAction, destoryLog } from '../../Action'
-import FixDiary from './fix-diary';
+import { formatAction, DESTORYLOG, CHANGEDIARY } from '../../Action'
+import DiaryEditForm from './diary-edit-form'
 const { Content } = Layout
 
 class DiariesList extends Component {
@@ -15,23 +15,26 @@ class DiariesList extends Component {
 
     render() {
         return (
-            <Content className={this.connectName}>
-                {this.props.message.map((element, index) => {
+            <Content>
+                {this.props.message.map((diary, index) => {
                     return (
-                        <div key={index}>
-                            <Card title={element.date + '的日志'} className="card-item" 
+                        <div key={index} className="card-item">
+                            <Card title={diary.date + '的日志'} className={diary.changeDiary}
                                 extra={<Popconfirm title="确认删除吗?" onConfirm={() => {this.handleDelete(index)}} okText="确认" cancelText="取消">
                                     <Icon type="close" />
                                 </Popconfirm>}>
                                 <Form>
-                                    <Markdown source={element.text} className="markdown"/>
+                                    <Markdown source={diary.text} className="markdown"/>
                                     <div className="practise-diary-operation-button-group">
-                                        <Button type="primary" size="small" ghost className="button-note">修改日志</Button>
+                                        <Button type="primary" size="small" ghost className="button-note" onClick={() => {this.props.changeDiary(index)}}>修改日志</Button>
                                         <Button type="primary" size="small" ghost className="button-note button-distance">评论日志</Button>
                                     </div>
                                 </Form>
                             </Card>
-                            <FixDiary element={element} index={index}/>
+                            <Card className={diary.changeDiary === 'diary-display-block' ? 'diary-display-none' : 'diary-display-block'}
+                                title="修改成长日志">
+                                <DiaryEditForm diary={diary} index={index}/>
+                            </Card>
                         </div>
                     )
                 })}
@@ -45,7 +48,11 @@ const mapPropsToDispatch = state => ({
 })
 const mapDispatchToState = (dispatch) => ({
     destoryText: (index) => {
-        dispatch(formatAction(destoryLog, index))
+        dispatch(formatAction(DESTORYLOG, index))
+    },
+
+    changeDiary: (index) => {
+        dispatch(formatAction(CHANGEDIARY, index))
     }
 })
 
