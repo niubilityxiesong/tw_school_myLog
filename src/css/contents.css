@@ -27,3 +27,9 @@
     border: 1px rgb(233, 233, 233) solid;
     background-color: rgb(251, 251, 251);
 }
+.diary-display-none{
+    display: none;
+}
+.diary-display-block{
+    display: block;
+}

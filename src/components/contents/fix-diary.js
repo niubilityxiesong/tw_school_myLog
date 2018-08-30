@@ -1,20 +1,19 @@
 import React, { Component } from 'react'
 import { DatePicker, Input, Button, Card, Form } from 'antd'
 import { connect } from 'react-redux'
-import DiariesList from './diaries-list'
-import { formatAction, addText } from '../../Action'
+import { formatAction, fixText } from '../../Action'
 import moment from 'moment'
 
 const { TextArea } = Input
 const FormItem = Form.Item
 
-class AddDiary extends Component{
+class FixDiary extends Component{
     constructor(props) {
         super(props)
-        let date = new Date()
         this.state = {
-            text: '## 我做了什么\n## 学了什么\n## 有什么印象深刻的收获\n',
-            date: date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
+            text: this.props.element.text,
+            date: this.props.element.date,
+            clazzName: 'diary-display-block'
         }
     }
 
@@ -40,15 +39,14 @@ class AddDiary extends Component{
         }
 
         return (
-            <div>
-                <Card title="新的日志" extra={<a href="https://www.baidu.com">如何写一篇优秀的成长日志</a>}>
+                <Card className={this.state.clazzName} title="修改成长日志" extra={<a href="https://www.baidu.com">如何写一篇优秀的成长日志</a>}>
                     <Form>
                         <FormItem
                             {...formItemLayout}
                             label="日期"
                         >
                         
-                            <DatePicker defaultValue={moment(new Date())} allowClear={false} onChange={(date, dateString) => {
+                            <DatePicker defaultValue={moment(this.state.date)} allowClear={false} onChange={(date, dateString) => {
                                 this.setState({date:dateString})
                             }}/>
                         
@@ -61,25 +59,22 @@ class AddDiary extends Component{
                         </FormItem>
                         <div className="practise-diary-operation-button-group">
                             <Button type="primary" size="small" ghost className="button-note" onClick={() => {
-                                this.props.addText(this.state.text, this.state.date)
-                                this.setState({text:'## 我做了什么\n## 学了什么\n## 有什么印象深刻的收获\n'})
+                                this.props.fixText(this.state.text, this.state.date, this.props.index)
                             }}>提交</Button>
                             <Button size="small" className='button-note button-distance'>取消</Button>
                         </div>
                     </Form>
                 </Card>
-                <DiariesList />
-            </div>
         )
     }
 }
 
 const mapPropsToDispatch = () => ({})
 const mapDispatchToState = dispatch => ({
-    addText: (text, date) => {
-        let data = { text, date }
-        dispatch(formatAction(addText, data))
+    fixText: (text, date, index) => {
+        let data = { text, date, index }
+        dispatch(formatAction(fixText, data))
     }
 })
 
-export default connect(mapPropsToDispatch,mapDispatchToState)(AddDiary)
+export default connect(mapPropsToDispatch,mapDispatchToState)(FixDiary)
