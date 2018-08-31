@@ -21,8 +21,8 @@ const message = (state = initState.text, action) => {
                 text: id === action.data.index ? action.data.text : diary.text,
                 date: id === action.data.index ? action.data.date : diary.date,
                 changeDiary: id === action.data.index 
-                ? (diary.changeDiary === DISPLAY ? HIDE : DISPLAY) 
-                : diary.changeDiary
+                    ? (diary.changeDiary === DISPLAY ? HIDE : DISPLAY) 
+                    : diary.changeDiary
             })
         })
     }
@@ -30,8 +30,8 @@ const message = (state = initState.text, action) => {
         return state.map((diary, id) => {
             return Object.assign({}, diary, {
                 changeDiary: id === action.data 
-                ? (diary.changeDiary === DISPLAY ? HIDE : DISPLAY) 
-                : diary.changeDiary
+                    ? (diary.changeDiary === DISPLAY ? HIDE : DISPLAY) 
+                    : diary.changeDiary
             })
         })
     }

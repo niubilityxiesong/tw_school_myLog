@@ -65,7 +65,7 @@ class AddDiary extends Component{
                                 this.setState({text:INITEDIT})
                             }}>提交</Button>
                             <Button size="small" className='button-note button-distance' onClick={() => {
-                                 this.setState({text:INITEDIT})
+                                this.setState({text:INITEDIT})
                             }}>取消</Button>
                         </div>
                     </Form>
