@@ -3,22 +3,20 @@ import { Layout} from 'antd'
 import { connect } from 'react-redux'
 import Diary from './diary'
 import {loadDiariesByPage} from '../../actions/diaries'
-import { DISPLAY } from '../../Action';
 
 const { Content } = Layout
 class DiariesList extends Component {
 
     componentWillMount(){
-        let { handleDiaries } = this.props;
-        handleDiaries();
+        let { handleDiaries } = this.props
+        handleDiaries()
     }
 
     render() {
         return (
             <Content>
-                {this.props.diaries.map((diary) => {
-                    diary.changeDiary = DISPLAY
-                    return <Diary key={diary.id} diary={diary} index={diary.id}/>
+                {this.props.diaries.map((diary, index) => {
+                    return <Diary key={index} diary={diary} index={index}/>
                 })}
             </Content>
         )

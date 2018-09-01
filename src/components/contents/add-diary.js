@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { DatePicker, Input, Button, Card, Form } from 'antd'
 import { connect } from 'react-redux'
 import DiariesList from './diaries-list'
-import { formatAction, ADDTEXT, INITEDIT } from '../../Action'
+import { INITEDIT } from '../../Action'
 import moment from 'moment'
+import { addDiary } from '../../actions/diaries'
 
 const { TextArea } = Input
 const FormItem = Form.Item
@@ -14,7 +15,11 @@ class AddDiary extends Component{
         let date = new Date()
         this.state = {
             text: INITEDIT,
-            date: date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
+            date: date.getFullYear() 
+            + '-' 
+            + ("0" + (date.getMonth() + 1)).slice(-2)
+            + '-' 
+            + ("0" + date.getDate()).slice(-2)
         }
     }
 
@@ -61,7 +66,7 @@ class AddDiary extends Component{
                         </FormItem>
                         <div className="practise-diary-operation-button-group">
                             <Button type="primary" size="small" ghost className="button-note" onClick={() => {
-                                this.props.addText(this.state.text, this.state.date, 'diary-display-block')
+                                this.props.addText(this.state.text, this.state.date)
                                 this.setState({text:INITEDIT})
                             }}>提交</Button>
                             <Button size="small" className='button-note button-distance' onClick={() => {
@@ -78,9 +83,12 @@ class AddDiary extends Component{
 
 const mapPropsToDispatch = () => ({})
 const mapDispatchToState = dispatch => ({
-    addText: (text, date, changeDiary) => {
-        let data = { text, date, changeDiary }
-        dispatch(formatAction(ADDTEXT, data))
+    addText: (text, date) => {
+        let diary = {
+            content : text,
+            date : date
+        }
+        dispatch(addDiary(diary))
     }
 })
 

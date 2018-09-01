@@ -4,7 +4,7 @@ import App from './App'
 import reducers from './reducers/Messages'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
-import thunkMiddleware from 'redux-thunk';
+import thunkMiddleware from 'redux-thunk'
 import './css/App.css'
 import 'antd/dist/antd.css'
 import './css/contents.css'
