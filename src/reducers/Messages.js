@@ -1,10 +1,11 @@
 import { combineReducers } from '../../node_modules/redux'
-import { ADDTEXT, CHANGEPAGE, DESTORYLOG, FIXTEXT, CHANGEDIARY, DISPLAY, HIDE } from '../Action'
+import { ADDTEXT, CHANGEPAGE, DESTORYLOG, FIXTEXT, CHANGEDIARY, DISPLAY, HIDE, ADDALLDIARIES } from '../Action'
 
 const initState = {
     text:[],
     selectedPage: '我的日志'
 }
+const sqlDiaries = []
 
 const message = (state = initState.text, action) => {
     if(action.type === ADDTEXT){
@@ -38,6 +39,13 @@ const message = (state = initState.text, action) => {
     return state
 }
 
+const diaries = (state = sqlDiaries, action) => {
+    if(action.type === ADDALLDIARIES) {
+        return action.data
+    }
+    return state;
+}
+
 const selection = (state = initState.selectedPage, action) => {
     if(action.type === CHANGEPAGE){
         state = action.data
@@ -47,7 +55,8 @@ const selection = (state = initState.selectedPage, action) => {
 
 const reducer = combineReducers({
     message: message,
-    selection: selection
+    selection: selection,
+    diaries:diaries
 })
 
 export default reducer

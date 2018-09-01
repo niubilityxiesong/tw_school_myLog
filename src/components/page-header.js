@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import { Layout, Row, Col, Dropdown, Button, Popover, Icon, message, Menu } from 'antd'
-
-const { Header } = Layout
+import { Row, Col, Dropdown, Button, Popover, Icon, message, Menu } from 'antd'
 
 function handleMenuClick() {
     message.info('Click on menu item.')
@@ -51,35 +49,33 @@ class PageHeader extends Component {
 
     render() {
         return (
-            <Header className="header">
-                <Row>
-                    <Col span={6}>
-                        <div className="logo"></div>
-                    </Col>
+            <Row>
+                <Col span={6}>
+                    <div className="logo"></div>
+                </Col>
 
-                    <Col span={14}>
-                        <Dropdown overlay={menu}>
-                            <Button className="margin-t-3 button-position">
+                <Col span={14}>
+                    <Dropdown overlay={menu}>
+                        <Button className="margin-t-3 button-position">
                         柳靓云 <Icon type="down" />
-                            </Button>
-                        </Dropdown>
-                    </Col>
+                        </Button>
+                    </Dropdown>
+                </Col>
                     
-                    <Col className='header-bell' span={1}>
-                        <span className="ant-badge">
-                            <Popover
-                                content={hoverContent}
-                                title="最新消息"
-                                trigger="hover"
-                                visible={this.state.hovered}
-                                onVisibleChange={this.handleHoverChange}
-                            >
-                                <Icon type="bell" className='bell-icon' />
-                            </Popover>
-                        </span>
-                    </Col>
-                </Row>
-            </Header>
+                <Col className='header-bell' span={1}>
+                    <span className="ant-badge">
+                        <Popover
+                            content={hoverContent}
+                            title="最新消息"
+                            trigger="hover"
+                            visible={this.state.hovered}
+                            onVisibleChange={this.handleHoverChange}
+                        >
+                            <Icon type="bell" className='bell-icon' />
+                        </Popover>
+                    </span>
+                </Col>
+            </Row>
         )
     }
 }

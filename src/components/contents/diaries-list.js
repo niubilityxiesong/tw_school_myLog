@@ -1,22 +1,24 @@
 import React, { Component } from 'react'
-import { Layout, message} from 'antd'
+import { Layout} from 'antd'
 import { connect } from 'react-redux'
-import { formatAction, DESTORYLOG, CHANGEDIARY } from '../../Action'
 import Diary from './diary'
-const { Content } = Layout
+import {loadDiariesByPage} from '../../actions/diaries'
+import { DISPLAY } from '../../Action';
 
+const { Content } = Layout
 class DiariesList extends Component {
-    
-    handleDelete = (index) => {
-        this.props.destoryText(index)
-        message.success('删除成功')
+
+    componentWillMount(){
+        let { handleDiaries } = this.props;
+        handleDiaries();
     }
 
     render() {
         return (
             <Content>
-                {this.props.message.map((diary, index) => {
-                    return (<Diary diary={diary} index={index}/>)
+                {this.props.diaries.map((diary) => {
+                    diary.changeDiary = DISPLAY
+                    return <Diary key={diary.id} diary={diary} index={diary.id}/>
                 })}
             </Content>
         )
@@ -24,15 +26,11 @@ class DiariesList extends Component {
 }
 
 const mapPropsToDispatch = state => ({
-    message: state.message
+    diaries: state.diaries
 })
 const mapDispatchToState = (dispatch) => ({
-    destoryText: (index) => {
-        dispatch(formatAction(DESTORYLOG, index))
-    },
-
-    changeDiary: (index) => {
-        dispatch(formatAction(CHANGEDIARY, index))
+    handleDiaries: () => {
+        dispatch(loadDiariesByPage())
     }
 })
 
