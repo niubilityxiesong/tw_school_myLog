@@ -4,7 +4,8 @@ import { CHANGEPAGE, DESTORYLOG, FIXTEXT, CHANGEDIARY, DISPLAY, HIDE, GETDIARIES
 const initState = {
     diaries: {
         diaryResponseList: [],
-        totalDiaries: 0
+        totalDiaries: 0,
+        page: 0
     },
     selectedPage: '我的日志'
 }
@@ -41,9 +42,12 @@ const diaries = (state = initState.diaries.diaryResponseList, action) => {
     return state
 }
 
-const totalDiaries = (state = initState.diaries.totalDiaries, action) => {
+const diaryPage = (state = initState.diaries.totalDiaries, action) => {
     if(action.type === GETDIARIES) {
-        return action.data.totalDiaries
+        return {
+            totalDiaries: action.data.totalDiaries, 
+            page: action.data.page
+        }
     }
     return state
 }
@@ -58,7 +62,7 @@ const selection = (state = initState.selectedPage, action) => {
 const reducer = combineReducers({
     selection: selection,
     diaries:diaries,
-    totalDiaries:totalDiaries
+    diaryPage:diaryPage
 })
 
 export default reducer

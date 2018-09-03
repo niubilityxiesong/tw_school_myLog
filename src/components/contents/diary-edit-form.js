@@ -63,7 +63,7 @@ class DiaryEditForm extends Component{
                     <Button size="small" className='button-note button-distance' onClick={() => {
                         this.props.changeDiary(this.props.index)
                         this.setState({
-                            text: this.props.diary.text,
+                            text: this.props.diary.content,
                             date: this.props.diary.date
                         })
                     }}>取消</Button>

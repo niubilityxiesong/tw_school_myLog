@@ -8,3 +8,4 @@ export const INITEDIT = '## 我做了什么\n## 学了什么\n## 有什么印象
 export const HIDE = 'diary-display-none'
 export const DISPLAY = 'diary-display-block'
 export const GETDIARIES = 'GET_DIARIES'
+export const INITPAGESIZE = 2
