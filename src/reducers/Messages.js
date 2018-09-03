@@ -2,13 +2,16 @@ import { combineReducers } from '../../node_modules/redux'
 import { CHANGEPAGE, DESTORYLOG, FIXTEXT, CHANGEDIARY, DISPLAY, HIDE, GETDIARIES } from '../Action'
 
 const initState = {
-    diaries:[],
+    diaries: {
+        diaryResponseList: [],
+        totalDiaries: 0
+    },
     selectedPage: '我的日志'
 }
 
-const diaries = (state = initState.diaries, action) => {
+const diaries = (state = initState.diaries.diaryResponseList, action) => {
     if(action.type === GETDIARIES) {
-        return action.data
+        return action.data.diaryResponseList
     }
     if(action.type === CHANGEDIARY){
         return state.map((diary, id) => {
@@ -38,6 +41,13 @@ const diaries = (state = initState.diaries, action) => {
     return state
 }
 
+const totalDiaries = (state = initState.diaries.totalDiaries, action) => {
+    if(action.type === GETDIARIES) {
+        return action.data.totalDiaries
+    }
+    return state;
+}
+
 const selection = (state = initState.selectedPage, action) => {
     if(action.type === CHANGEPAGE){
         state = action.data
@@ -47,7 +57,8 @@ const selection = (state = initState.selectedPage, action) => {
 
 const reducer = combineReducers({
     selection: selection,
-    diaries:diaries
+    diaries:diaries,
+    totalDiaries:totalDiaries
 })
 
 export default reducer
