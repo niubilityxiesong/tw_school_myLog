@@ -3,7 +3,7 @@ import { Layout, Pagination } from 'antd'
 import { connect } from 'react-redux'
 import Diary from './diary'
 import {loadDiariesByPage, loadDiaries} from '../../actions/diaries'
-import { DISPLAY, HIDE } from '../../Action';
+import { DISPLAY, HIDE } from '../../Action'
 
 
 const { Content } = Layout
@@ -27,14 +27,14 @@ class DiariesList extends Component {
                     return <Diary key={index} diary={diary} index={index}/>
                 })}
                 <Pagination current={this.state.current} 
-                total={this.props.totalDiaries} 
-                className={this.props.totalDiaries === 0 ? HIDE : DISPLAY}
-                pageSize={2}
-                onChange={(page, pageSize) => {
-                    this.setState({
-                        current:page
-                    })
-                    this.props.handleReloadDiaries(page, pageSize)}
+                    total={this.props.totalDiaries} 
+                    className={this.props.totalDiaries === 0 ? HIDE : DISPLAY}
+                    pageSize={2}
+                    onChange={(page, pageSize) => {
+                        this.setState({
+                            current:page
+                        })
+                        this.props.handleReloadDiaries(page, pageSize)}
                     }/>
                 
             </Content>

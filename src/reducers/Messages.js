@@ -45,7 +45,7 @@ const totalDiaries = (state = initState.diaries.totalDiaries, action) => {
     if(action.type === GETDIARIES) {
         return action.data.totalDiaries
     }
-    return state;
+    return state
 }
 
 const selection = (state = initState.selectedPage, action) => {
