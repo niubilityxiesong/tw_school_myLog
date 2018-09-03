@@ -15,7 +15,7 @@ class DiariesList extends Component {
         }
     }
 
-    componentWillMount(){
+    componentDidMount(){
         let { handleDiaries } = this.props
         handleDiaries()
     }

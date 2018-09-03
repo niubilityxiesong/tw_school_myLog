@@ -31,7 +31,7 @@ class Diary extends Component {
                 </Card>
                 <Card className={this.props.diary.changeDiary === DISPLAY ? HIDE : DISPLAY}
                     title="修改成长日志">
-                    <DiaryEditForm diary={this.props.diary} index={this.props.index}/>
+                    <DiaryEditForm diary={this.props.diary} index={this.props.index} key={this.props.diary.content}/>
                 </Card>
             </div>
         )

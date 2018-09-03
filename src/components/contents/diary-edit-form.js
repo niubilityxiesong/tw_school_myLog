@@ -16,13 +16,6 @@ class DiaryEditForm extends Component{
             date: this.props.diary.date
         }
     }
-    
-    componentWillReceiveProps(){
-        this.setState({
-            text: this.props.diary.content,
-            date: this.props.diary.date
-        })
-    }
 
     handleTextChange = event => {
         const text = event.target.value
